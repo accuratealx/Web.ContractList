@@ -1,0 +1,64 @@
+<script>
+    function ChangePage(page) {
+        url = page == 'archive' ? 'archive' : 'work';
+        window.location.href = '?page=' + url;
+    }
+</script>
+
+<style type="text/css">
+    .TitleWrapper {
+        display: flex;
+        justify-content: center;
+    }
+
+    .Title {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .TitleItem {
+        color: white;
+        font-weight: bold;
+        font-size: 13px; 
+        padding: 8px 20px;
+        border-radius: 5px;
+        background-color: darkgray; 
+        cursor: pointer;
+        margin: 0px 5px;
+    }
+
+    .TitleItem:hover {
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    .TitleItem:active {
+        color: black; 
+    }
+
+    .TitleItemHighLight {
+        background-color: cornflowerblue;
+    }
+</style>
+
+<div class="TitleWrapper">
+    <div class="Title">
+
+        <?php 
+            global $Page;
+            $HWork = 'TitleItem';
+            $HArchive = 'TitleItem';
+
+            if ($Page == 'archive') {
+                $HArchive .= ' TitleItemHighLight';
+            } else {
+                $HWork .= ' TitleItemHighLight';
+            }
+        ?>
+        <div class="<?php echo $HWork; ?>" onclick="ChangePage('work')">Контракты</div> 
+        <div class="<?php echo $HArchive; ?>" onclick="ChangePage('archive')">Архив</div>
+
+
+    </div>
+</div>

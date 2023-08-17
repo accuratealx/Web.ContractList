@@ -1,0 +1,109 @@
+<script>
+    function DataTable_ApplyFilter(filter = "") {
+        filter = filter.toUpperCase();
+        table = document.getElementById("DataTable");
+
+        for (i = 1; i < table.rows.length; i++) {
+            flag = false;
+
+            for (j = 1; j < table.rows[i].cells.length; j++) {
+                txt = table.rows[i].cells[j].innerHTML.toUpperCase();
+
+                flag = txt.indexOf(filter) > -1;
+                if (flag) break;
+            }
+
+            if (flag) {
+                table.rows[i].style.display = "";
+            } else {
+                table.rows[i].style.display = "none";
+            }
+
+        }
+    }
+</script>
+
+
+<style type="text/css">
+    .DataTableWrapper {
+        display: flex;
+        justify-content: center;
+    }
+
+    .DataTableRect {
+        min-width: 600px;
+        width: 90%;
+        padding: 10px;
+    }
+
+    .DataTable {
+        width: 100%;
+        border-collapse: collapse;
+        border-radius: 10px;
+    }
+
+    .DataTable th {
+        border: 1px solid darkgray;
+        background-color: cornflowerblue;
+        padding: 10px 5px;
+        cursor: default;
+        color: white;
+        text-shadow: 0px 0px 3px rgba(0, 0, 0, 1);
+    }
+
+    .DataTable tr:hover {
+        background-color: cornflowerblue;
+        cursor: pointer;
+    }
+
+    .DataTable td {
+        border: 1px solid darkgray;
+        padding: 4px 10px;
+    }
+</style>
+
+
+<div class="DataTableWrapper">
+
+    <div class="DataTableRect ShadowBox">
+        <table class="DataTable" id="DataTable">
+            <tr>
+                <th width="30px">№</th>
+                <th width=>Наименование контракта</th>
+                <th width="150px">Дата заключения</th>
+                <th width="150px">Дата подготовки</th>
+                <th width="150px">Сумма контракта</th>
+                <th width="150px">Дата подписания акта</th>
+                <th>Заметка</th>
+            </tr>
+
+
+            <?php
+            global $Config;
+
+            $cntr = 0;
+            foreach ($Storage->GetArchiveList() as $item) {
+                $cntr++;
+                $DateFormat = "d-m-Y";
+                $SignDate = date($DateFormat, strtotime($item['SignDate']));
+                $PreparationDate = date($DateFormat, strtotime($item['PreparationDate']));
+                $ActSignDate = date($DateFormat, strtotime($item['ActSignDate']));
+
+                echo "<tr>";
+                    echo "<td>{$cntr}</td>";
+                    echo "<td>{$item['Title']}</td>";
+                    echo "<td>{$SignDate}</td>";
+                    echo "<td>{$PreparationDate}</td>";
+                    echo "<td>{$item['ContractAmount']}</td>";
+                    echo "<td>{$ActSignDate}</td>";
+                    echo "<td>{$item['Commentary']}</td>";
+                echo "</tr>";
+                echo PHP_EOL;
+            }
+
+            ?>
+
+        </table>  
+    </div>  
+
+</div>

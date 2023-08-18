@@ -1,27 +1,16 @@
 <?php
 
-error_reporting(E_ALL);
-ini_set('display_errors', 'On');
-
+//Пути
 define("DIR_ROOT", dirname(__FILE__)."/");
-// define("DIR_CORE", DIR_ROOT."core/");
-// define("DIR_TEMPLATE", DIR_ROOT."template/");
+define("DIR_COMPONENTS", DIR_ROOT."components/");
+define("DIR_MODAL", DIR_ROOT."modal/");
+define("DIR_PAGE", DIR_ROOT."page/");
 
-$Page = "work";
-if (isset($_GET['page'])) {
-    $Page = $_GET['page'];
-}
-
-if (($Page !== "work") && ($Page !== "archive")) {
-    $Page = "work";
-}
-
-include "config.inc.php";
+//Подключить нужное
+include DIR_ROOT ."config.inc.php";
 include DIR_ROOT . "storage.php";
 
-
-global $Storage;
-
+//Подключиться к хранилищу
 try {
     $Storage = new Storage(
         $Config["DataBase"]["Host"],
@@ -35,7 +24,35 @@ try {
     die;
 }
 
+function GetPostValue(string $ValueName, string $DefaultValue = ''): string {
+    if (isset($_POST[$ValueName])) {
+        return $_POST[$ValueName];
+    } else {
+        return $DefaultValue;
+    }
+}
 
-include (DIR_ROOT . "page_" . $Page . ".php");
+function GetPageName($DefaultPage = PAGE_WORK): string {
+    $page = $DefaultPage;
+
+    if (isset($_GET['page'])) {
+        $page = $_GET['page'];
+    }
+
+    if (($page !== PAGE_WORK) && ($page !== PAGE_ARCHIVE)) {
+        $page = PAGE_WORK;
+    }
+
+    return $page;
+}
+
+
+/////////////////////////////////////////////////////////////////////
+
+//Обработчик действий
+include('processor.php');
+
+//Отображение страниц
+include('view.php');
 
 ?>

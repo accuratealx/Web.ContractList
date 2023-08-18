@@ -1,5 +1,5 @@
 <script>
-    function DataTable_ApplyFilter(filter = "") {
+    function Table_ApplyFilter(filter = "") {
         filter = filter.toUpperCase();
         table = document.getElementById("DataTable");
 
@@ -22,72 +22,35 @@
         }
     }
 
-    function DataTable_ClearSelection() {
+    function WorkTable_ClearSelection() {
         table = document.getElementById("DataTable");
         for (i = 1; i < table.rows.length; i++) {
             table.rows[i].style.backgroundColor = "";
         }
     }
 
-    function DataTable_SelectLine(tr) {
-        DataTable_ClearSelection();
-        tr.style.backgroundColor = "cornflowerblue";
+    function WorkTable_SelectLine(tr) {
+        WorkTable_ClearSelection();
+        tr.style.backgroundColor = "rgba(100, 149, 237, 0.7)";
     }
 
 </script>
 
 
+<link rel="stylesheet" href="css/Tables.css">
+
+
 <style type="text/css">
-    .DataTableWrapper {
-        display: flex;
-        justify-content: center;
-    }
-
-    .DataTableRect {
-        min-width: 600px;
-        width: 90%;
-        padding: 10px;
-    }
-
-    .DataTable {
-        width: 100%;
-        border-collapse: collapse;
-        border-radius: 10px;
-    }
-
-    .DataTable th {
-        border: 1px solid darkgray;
-        background-color: cornflowerblue;
-        padding: 10px 5px;
-        cursor: default;
-        color: white;
-        text-shadow: 0px 0px 3px rgba(0, 0, 0, 1);
-    }
-
-    .WidthDate {
-        width: fit-content;
-    }
-
-    .DataTable tr:hover {
-        background-color: cornflowerblue;
-        cursor: pointer;
-    }
-
-    .DataTable td {
-        border: 1px solid darkgray;
-        padding: 4px 10px;
-    }
-
     .RedHighlight {
         background-color: rgba(255, 0, 0, 0.1);
     }
 </style>
 
 
-<div class="DataTableWrapper">
+<div class="TableWrapper">
 
-    <div class="DataTableRect ShadowBox">
-        <table class="DataTable" id="DataTable">
+    <div class="TableFrame ShadowBox">
+        <table id="DataTable">
             <tr>
                 <th hidden></th>
                 <th width="30px">№</th>
@@ -100,10 +63,10 @@
 
 
             <?php
-            global $Config;
+            global $Data;
 
             $cntr = 0;
-            foreach ($Storage->GetContractList() as $item) {
+            foreach ($Data['Table'] as $item) {
                 $cntr++;
                 $DateFormat = "d-m-Y";
                 $SignDate = date($DateFormat, strtotime($item['SignDate']));
@@ -113,12 +76,12 @@
                     echo "<td hidden>{$item['ID']}</td>";
                     echo "<td>{$cntr}</td>";
                     echo "<td>{$item['Title']}</td>";
-                    echo "<td>{$SignDate}</td>";
+                    echo "<td class='TableTDCentered'>{$SignDate}</td>";
 
-                    $Highlight = ( (strtotime($item['PreparationDate']) - $Config["Logic"]["DaysToDisaster"] * 24 * 60 * 60) < time()) ? 'RedHighlight' : '';
-                    echo "<td class={$Highlight}>{$PreparationDate}</td>";
+                    $Highlight = ( (strtotime($item['PreparationDate']) - $Data['DaysToDisaster'] * 24 * 60 * 60) < time()) ? 'RedHighlight' : '';
+                    echo "<td class='TableTDCentered {$Highlight}'>{$PreparationDate}</td>";
 
-                    echo "<td>{$item['ContractAmount']}</td>";
+                    echo "<td class='TableTDRight'>{$item['ContractAmount']}</td>";
                     echo "<td>{$item['Commentary']}</td>";
                 echo "</tr>";
                 echo PHP_EOL;

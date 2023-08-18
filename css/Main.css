@@ -1,0 +1,53 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #fafafa;
+}
+
+.ShadowBox {
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Кнопки */
+button {
+    font-weight: bold;
+    border-style: none;
+    padding: 8px 50px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 5px;
+    margin-right: 5px;
+    color: white;
+    font-size: 13px;
+    background-color: darkgray;
+}
+
+button:active {
+    color: black;
+}
+
+button:disabled {
+    background-color: lightgray;
+    color: darkgray;
+    box-shadow: none;
+    pointer-events: none;
+}
+
+button:enabled:hover {
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+}
+
+.ButtonHighlightBlue {
+    background-color: cornflowerblue;
+}
+
+.ButtonHighlightRed {
+    background-color: tomato;
+}
+

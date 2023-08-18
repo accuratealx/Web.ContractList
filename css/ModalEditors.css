@@ -43,3 +43,29 @@
 .ModalEditor_Form {
     font-size: 16px;
 }
+
+.ModalEditor_ItemWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+.ModalEditor_TextWrapper {
+    display: flex;
+    justify-content: center;
+    max-width: 600px;
+}
+
+.ModalEditor_Item {
+    width: 350px;
+    margin-left: 20px;
+    font-size: 16px;
+    padding: 2px 5px;
+}
+
+.ModalEditor_ButtonToolBar {
+    display: flex;
+    justify-content: center;
+}

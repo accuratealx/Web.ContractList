@@ -18,11 +18,10 @@ function SetSelectedContractFromTR(tr) {
 
 //Поправить видимость кнопок панели управления
 function CorrectToolbar(Contract = null) {
-    value = (Contract == null) ? "hidden" : "visible";
-
-    document.getElementById("ToolBtnEdit").style.visibility = value;
-    document.getElementById("ToolBtnDelete").style.visibility = value;
-    document.getElementById("ToolBtnArchive").style.visibility = value;
+    Disable = (Contract == null) ? true : false;
+    document.getElementById("ToolBtnEdit").disabled = Disable;
+    document.getElementById("ToolBtnDelete").disabled = Disable;
+    document.getElementById("ToolBtnArchive").disabled = Disable;
 }
 
 //Вернуть текущую дату
@@ -34,19 +33,19 @@ function GetCurrentDate() {
 function SelectContract(tr) {
     SetSelectedContractFromTR(tr);
     CorrectToolbar(SelectedContract);
-    DataTable_SelectLine(tr);
+    WorkTable_SelectLine(tr);
 }
 
 //Сбросить активный контракт
 function ResetContract() {
     ResetSelectedContract();
     CorrectToolbar();
-    DataTable_ClearSelection();
+    WorkTable_ClearSelection();
 }
 
 //Добавить новый контракт
 function NewContract() {
-    ModalEditor_Add();
+    ContractAddEdit_Add();
 }
 
 //Изменить контракт
@@ -55,21 +54,24 @@ function EditContract(tr) {
         SetSelectedContractFromTR(tr);
     }
       
-    ModalEditor_Edit(SelectedContract);
+    ContractAddEdit_Edit(SelectedContract);
 }
 
 //Удалить контракт
 function DeleteContract() {
-    ModalQuestion_Delete(SelectedContract);
+    ContractDelete_Execute(SelectedContract);
 }
 
 //Поместить контракт в архив
 function ToArchiveContract() {
-    ModalArchive_ToArchive(SelectedContract);
+    ToArchive_Execute(SelectedContract);
 }
 
+//Применить фильтр
+function ApplyFilter(text = '') {
+    Table_ApplyFilter(text);
+}
 
 window.onload = function(event) {
     CorrectToolbar();
 }
-

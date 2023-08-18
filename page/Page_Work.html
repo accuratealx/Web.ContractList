@@ -1,0 +1,28 @@
+<?php
+    global $Data;
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><?php echo $Data['Title']; ?></title>
+    <link rel="icon" type="image/png" href="AppIcon.png" />
+    <link rel="stylesheet" href="css/Main.css">
+    <link rel="stylesheet" href="css/ModalEditors.css">
+    <script src="Main.js"></script>
+</head>
+<body>
+
+    <?php include(DIR_COMPONENTS . "Component_PageSelector.html"); ?>
+    <?php include(DIR_COMPONENTS . "Component_Filter.html"); ?>
+    </br>
+    <?php include(DIR_COMPONENTS . "Component_ToolBar.html"); ?>
+    <br/>
+    <?php include(DIR_COMPONENTS . "Component_WorkTable.html"); ?>
+    <?php include(DIR_MODAL . "ModalEditor_ContractAddEdit.html"); ?>
+    <?php include(DIR_MODAL . "ModalEditor_ContractDelete.html"); ?>
+    <?php include(DIR_MODAL . "ModalEditor_ToArchive.html"); ?>
+
+</body>
+</html>

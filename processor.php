@@ -1,46 +1,11 @@
 <?php
 
-function GetPostValue(string $ValueName, string $DefaultValue = ''): string {
-    if (isset($_POST[$ValueName])) {
-        return $_POST[$ValueName];
-    } else {
-        return $DefaultValue;
-    }
-}
-
-
 $Action = '';
 if (isset($_GET['Action'])) {
     $Action = $_GET['Action'];
 }
 
-if ($Action == '') {
-    header("location: index.php");
-    die;
-}
-
-
-
-define("DIR_ROOT", dirname(__FILE__)."/");
-include "config.inc.php";
-include DIR_ROOT . "storage.php";
-
-global $Storage;
-
-try {
-    $Storage = new Storage(
-        $Config["DataBase"]["Host"],
-        $Config["DataBase"]["Port"],
-        $Config["DataBase"]["User"],
-        $Config["DataBase"]["Password"],
-        $Config["DataBase"]["DBName"]
-    );
-} catch (Exception $E) {
-    echo("Произошла ошибка при подключении к хранилищу." . PHP_EOL . $E->getMessage());
-    die;
-}
-
-
+//Выполнить действие
 switch ($Action) {
     case "New":
         Command_AddNewContract();
@@ -58,9 +23,6 @@ switch ($Action) {
         Command_ToArchive();
     break;
 }
-
-
-
 
 function Command_AddNewContract() {
     global $Storage;

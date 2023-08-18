@@ -1,0 +1,39 @@
+<script>
+    function ContractDelete_Close() {
+        ModalEditor = document.getElementById("ContractDelete_Background").style.visibility = "hidden";
+    }
+
+    function ContractDelete_Execute(Contract) {
+        document.getElementById("ContractDelete_Background").style.visibility = "visible";
+        document.getElementById("ContractDelete_QuestionText").innerHTML = 'Удалить контракт "' + Contract.Title + '" ?';
+        document.getElementById("ContractDelete_ID").value = Contract.ID;
+    }
+</script>
+
+
+<div class="ModalEditor_Background" id="ContractDelete_Background">
+    <div class="ModalEditor_Frame">
+
+        <div class="ModalEditor_CaptionWrapper">
+            <H3 class="ModalEditor_Caption">Удаление контракта</H3>
+        </div>
+
+        <div class="ModalEditor_ContentWrapper">
+            <form class="ModalEditor_Form" method="post" action="index.php?Action=Delete">
+
+                <div class="ModalEditor_TextWrapper">
+                    <p class="ModalQuestionText" id="ContractDelete_QuestionText">?</p>
+                </div>
+
+                <input class="ModalEditor_Hidden" id="ContractDelete_ID" name="ID">
+
+                <div class="ModalEditor_ButtonToolBar">
+                    <button class="ButtonHighlightBlue" type="submit" id="EditorAction">Удалить</button>
+                    <button class="ButtonHighlightRed" type="reset" onclick="ContractDelete_Close()">Отменить</button>
+                </div>
+            </form>
+
+        </div>    
+
+    </div>
+</div>

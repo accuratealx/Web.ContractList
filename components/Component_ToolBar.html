@@ -1,0 +1,30 @@
+<style type="text/css">
+    .ToolBarWrapper {
+        display: flex;
+        justify-content: center;
+    }
+
+    .ToolBar {
+        width: 650px;
+        display: flex;
+        justify-content: space-around;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-radius: 10px;
+        background-color: white;
+    }
+
+    .ToolBar button {
+        padding: 8px 42px;
+    }
+</style>
+
+
+<div class="ToolBarWrapper">
+    <div class="ToolBar ShadowBox">
+        <button class="ButtonHighlightBlue" onclick="NewContract()">Добавить</button>
+        <button class="ButtonHighlightBlue" id="ToolBtnEdit" onclick="EditContract()">Изменить</button>
+        <button class="ButtonHighlightRed" id="ToolBtnDelete" onclick="DeleteContract()">Удалить</button>
+        <button class="ButtonHighlightBlue" id="ToolBtnArchive" onclick="ToArchiveContract()">В архив</button>
+    </div>
+</div>

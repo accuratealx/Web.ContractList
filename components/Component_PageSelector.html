@@ -1,0 +1,45 @@
+<script>
+    function ChangePage(page) {
+        url = page == 'archive' ? 'archive' : 'work';
+        window.location.href = '?page=' + url;
+    }
+</script>
+
+<style type="text/css">
+    .TitleWrapper {
+        display: flex;
+        justify-content: center;
+    }
+
+    .Title {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .TitleButton {
+        padding: 8px 20px;
+    }
+</style>
+
+<div class="TitleWrapper">
+    <div class="Title">
+
+        <?php 
+            global $Data;
+            $HWork = 'TitleButton';
+            $HArchive = 'TitleButton';
+
+            if ($Data['Page'] == 'archive') {
+                $HArchive .= ' ButtonHighlightBlue';
+            } else {
+                $HWork .= ' ButtonHighlightBlue';
+            }
+        ?>
+
+        <button class="<?php echo $HWork; ?>" onclick="ChangePage('work')">Контракты</button>
+        <button class="<?php echo $HArchive; ?>" onclick="ChangePage('archive')">Архив</button>
+
+    </div>
+</div>

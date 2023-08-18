@@ -1,5 +1,5 @@
 <script>
-    function DataTable_ApplyFilter(filter = "") {
+    function Table_ApplyFilter(filter = "") {
         filter = filter.toUpperCase();
         table = document.getElementById("DataTable");
 
@@ -24,65 +24,28 @@
 </script>
 
 
-<style type="text/css">
-    .DataTableWrapper {
-        display: flex;
-        justify-content: center;
-    }
-
-    .DataTableRect {
-        min-width: 600px;
-        width: 90%;
-        padding: 10px;
-    }
-
-    .DataTable {
-        width: 100%;
-        border-collapse: collapse;
-        border-radius: 10px;
-    }
-
-    .DataTable th {
-        border: 1px solid darkgray;
-        background-color: cornflowerblue;
-        padding: 10px 5px;
-        cursor: default;
-        color: white;
-        text-shadow: 0px 0px 3px rgba(0, 0, 0, 1);
-    }
-
-    .DataTable tr:hover {
-        background-color: cornflowerblue;
-        cursor: pointer;
-    }
-
-    .DataTable td {
-        border: 1px solid darkgray;
-        padding: 4px 10px;
-    }
-</style>
+<link rel="stylesheet" href="css/Tables.css">
 
 
-<div class="DataTableWrapper">
+<div class="TableWrapper">
 
-    <div class="DataTableRect ShadowBox">
-        <table class="DataTable" id="DataTable">
+    <div class="TableFrame ShadowBox">
+        <table id="DataTable">
             <tr>
                 <th width="30px">№</th>
                 <th width=>Наименование контракта</th>
                 <th width="150px">Дата заключения</th>
                 <th width="150px">Дата подготовки</th>
                 <th width="150px">Сумма контракта</th>
-                <th width="150px">Дата подписания акта</th>
+                <th width="200px">Дата подписания акта</th>
                 <th>Заметка</th>
             </tr>
 
-
             <?php
-            global $Config;
+            global $Data;
 
             $cntr = 0;
-            foreach ($Storage->GetArchiveList() as $item) {
+            foreach ($Data['Table'] as $item) {
                 $cntr++;
                 $DateFormat = "d-m-Y";
                 $SignDate = date($DateFormat, strtotime($item['SignDate']));
@@ -92,10 +55,10 @@
                 echo "<tr>";
                     echo "<td>{$cntr}</td>";
                     echo "<td>{$item['Title']}</td>";
-                    echo "<td>{$SignDate}</td>";
-                    echo "<td>{$PreparationDate}</td>";
-                    echo "<td>{$item['ContractAmount']}</td>";
-                    echo "<td>{$ActSignDate}</td>";
+                    echo "<td class='TableTDCentered'>{$SignDate}</td>";
+                    echo "<td class='TableTDCentered'>{$PreparationDate}</td>";
+                    echo "<td class='TableTDRight'>{$item['ContractAmount']}</td>";
+                    echo "<td class='TableTDCentered'>{$ActSignDate}</td>";
                     echo "<td>{$item['Commentary']}</td>";
                 echo "</tr>";
                 echo PHP_EOL;

@@ -1,0 +1,54 @@
+table {
+    border-collapse: collapse;
+    border-radius: 10px;
+    width: 100%;
+    border: 1px solid lightgray;
+}
+
+table th {
+    border: 1px solid lightgray;
+    background-color: cornflowerblue;
+    padding: 10px 5px;
+    cursor: default;
+    color: white;
+    text-shadow: 0px 0px 3px rgba(0, 0, 0, 1);
+}
+
+table tr:hover {
+    background-color: rgba(100, 149, 237, 0.7); 
+    cursor: pointer;
+}
+
+table tr:hover:nth-child(odd) {
+    background-color: rgba(100, 149, 237, 0.7); 
+    cursor: pointer;
+}
+
+table tr:nth-child(odd) {
+    background-color: #f0f0f0;
+}
+
+table td {
+    border: 1px solid lightgray;
+    padding: 6px 10px;
+}
+
+.TableWrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.TableFrame {
+    min-width: 600px;
+    width: 90%;
+    padding: 10px;
+    background-color: white;
+}
+
+.TableTDCentered {
+    text-align: center;
+}
+
+.TableTDRight {
+    text-align: right;
+}

@@ -1,0 +1,55 @@
+<style type="text/css">
+    .FooterWrapeer {
+        display: flex;
+        justify-content: center;
+    }
+
+    .FooterFrame {
+        min-width: 600px;
+        width: 90%;
+        font-size: 12px;
+        font-weight: bold;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .FooterItem {
+        display: flex;
+        flex-direction: column;
+        color: darkgray;
+    }
+
+    .FooterItem p {
+        margin: 2px 0px;
+    }
+
+    .FooterItemLeft {
+        align-items: flex-start;
+    }
+
+    .FooterItemRight {
+        align-items: flex-end;
+    }
+</style>
+
+<?php
+    global $Data;
+?>
+
+<div class="FooterWrapeer FooterItemLeft">
+    <div class="FooterFrame">
+
+        <div class="FooterItem">
+            <p><?php echo sprintf('%s v%s', $Data['SystemInfo']['Title'], $Data['SystemInfo']['Version']); ?></p>
+            <p><?php echo $Data['SystemInfo']['Mail']; ?></p>
+        </div>
+
+        <div class="FooterItem FooterItemRight">
+            <p><?php echo $Data['Enterprise']['Title']; ?></p>
+            <p><?php echo $Data['Enterprise']['Adress']; ?></p>
+            <p><?php echo $Data['Enterprise']['Phone']; ?></p>
+            <p><?php echo $Data['Enterprise']['Mail']; ?></p>            
+        </div>
+
+    </div>
+</div>

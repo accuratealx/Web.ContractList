@@ -9,9 +9,17 @@ $Data['Page'] = 'work';
 $Data['Title'] = '';
 $Data['Table'] = '';
 $Data['DaysToDisaster'] = $Config["Logic"]["DaysToDisaster"];
+$Data['SystemInfo'] = '';
+$Data['Enterprise'] = '';
 
 //Определить тип страницы
 $Data['Page'] = GetPageName();
+
+//Сведения о системе
+$Data['SystemInfo'] = $Config["SystemInfo"];
+
+//Сведения о предприятии
+$Data['Enterprise'] = $Config["Enterprise"];
 
 //Подключить страницу
 switch ($Data['Page']) {

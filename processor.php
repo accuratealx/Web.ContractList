@@ -94,4 +94,13 @@ function Command_ToArchive() {
     header("location: index.php");
 };
 
+
+function GetPostValue(string $ValueName, string $DefaultValue = ''): string {
+    if (isset($_POST[$ValueName])) {
+        return $_POST[$ValueName];
+    } else {
+        return $DefaultValue;
+    }
+};
+
 ?>

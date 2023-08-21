@@ -36,6 +36,20 @@ switch ($Data['Page']) {
 
         include(DIR_PAGE . 'Page_Archive.html');
     break;
-}
+};
+
+function GetPageName($DefaultPage = PAGE_WORK): string {
+    $page = $DefaultPage;
+
+    if (isset($_GET['page'])) {
+        $page = $_GET['page'];
+    }
+
+    if (($page !== PAGE_WORK) && ($page !== PAGE_ARCHIVE)) {
+        $page = PAGE_WORK;
+    }
+
+    return $page;
+};
 
 ?>

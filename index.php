@@ -1,4 +1,5 @@
 <?php
+use Vtiful\Kernel\Format;
 
 //Пути
 define("DIR_ROOT", dirname(__FILE__)."/");
@@ -24,30 +25,6 @@ try {
     die;
 }
 
-function GetPostValue(string $ValueName, string $DefaultValue = ''): string {
-    if (isset($_POST[$ValueName])) {
-        return $_POST[$ValueName];
-    } else {
-        return $DefaultValue;
-    }
-}
-
-function GetPageName($DefaultPage = PAGE_WORK): string {
-    $page = $DefaultPage;
-
-    if (isset($_GET['page'])) {
-        $page = $_GET['page'];
-    }
-
-    if (($page !== PAGE_WORK) && ($page !== PAGE_ARCHIVE)) {
-        $page = PAGE_WORK;
-    }
-
-    return $page;
-}
-
-
-/////////////////////////////////////////////////////////////////////
 
 //Обработчик действий
 include('processor.php');

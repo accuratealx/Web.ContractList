@@ -18,7 +18,7 @@ CREATE TABLE `history` (
   `ContractAmount` int NOT NULL,
   `Commentary` varchar(255) NOT NULL,
   `ActSignDate` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Список активных контрактов';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='История контрактов';
 
 CREATE TABLE `work` (
   `ID` int NOT NULL,

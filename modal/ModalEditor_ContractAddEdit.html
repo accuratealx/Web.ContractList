@@ -1,46 +1,46 @@
 <script>
-function ContractAddEdit_Add() {
-    document.getElementById("ContractAddEdit_Background").style.visibility = "visible";
-    document.getElementById("ContractAddEdit_Caption").innerHTML = "Добавление контракта";
-    document.getElementById("ContractAddEdit_Form").action = "index.php?Action=New";
-    TitleEdit = document.getElementById("ContractAddEdit_Title");
-    TitleEdit.value = "";
-    TitleEdit.focus();
-    document.getElementById("ContractAddEdit_SignDate").value = GetCurrentDate();
-    document.getElementById("ContractAddEdit_PreparationDate").value = GetCurrentDate();
-    document.getElementById("ContractAddEdit_ContractAmount").value = 0;
-    document.getElementById("ContractAddEdit_Comment").value = "";
-    Submit = document.getElementById("ContractAddEdit_Submit");
-    Submit.disabled = true;
-    Submit.innerHTML = "Добавить";
-}
+    function ContractAddEdit_Add() {
+        document.getElementById("ContractAddEdit_Background").style.visibility = "visible";
+        document.getElementById("ContractAddEdit_Caption").innerHTML = "Добавление контракта";
+        document.getElementById("ContractAddEdit_Form").action = "index.php?Action=New";
+        TitleEdit = document.getElementById("ContractAddEdit_Title");
+        TitleEdit.value = "";
+        TitleEdit.focus();
+        document.getElementById("ContractAddEdit_SignDate").value = GetCurrentDate();
+        document.getElementById("ContractAddEdit_PreparationDate").value = GetCurrentDate();
+        document.getElementById("ContractAddEdit_ContractAmount").value = 0;
+        document.getElementById("ContractAddEdit_Comment").value = "";
+        Submit = document.getElementById("ContractAddEdit_Submit");
+        Submit.disabled = true;
+        Submit.innerHTML = "Добавить";
+    }
 
-function ContractAddEdit_Edit(Contract) {
-    document.getElementById("ContractAddEdit_Background").style.visibility = "visible";
-    document.getElementById("ContractAddEdit_Caption").innerHTML = "Изменение контракта";
-    document.getElementById("ContractAddEdit_Form").action = "index.php?Action=Edit";
-    TitleEdit = document.getElementById("ContractAddEdit_Title");
-    TitleEdit.value = Contract.Title;
-    TitleEdit.focus();
-    document.getElementById("ContractAddEdit_SignDate").value = Contract.SignDate.split('-').reverse().join('-');
-    document.getElementById("ContractAddEdit_PreparationDate").value = Contract.PreparationDate.split('-').reverse().join('-');
-    document.getElementById("ContractAddEdit_ContractAmount").value = Contract.ContractAmount;
-    document.getElementById("ContractAddEdit_Comment").value = Contract.Comment;
-    document.getElementById("ContractAddEdit_ID").value = Contract.ID;
-    Submit = document.getElementById("ContractAddEdit_Submit");
-    Submit.disabled = false;
-    Submit.innerHTML = "Изменить";
-}
+    function ContractAddEdit_Edit(Contract) {
+        document.getElementById("ContractAddEdit_Background").style.visibility = "visible";
+        document.getElementById("ContractAddEdit_Caption").innerHTML = "Изменение контракта";
+        document.getElementById("ContractAddEdit_Form").action = "index.php?Action=Edit";
+        TitleEdit = document.getElementById("ContractAddEdit_Title");
+        TitleEdit.value = Contract.Title;
+        TitleEdit.focus();
+        document.getElementById("ContractAddEdit_SignDate").value = Contract.SignDate.split('-').reverse().join('-');
+        document.getElementById("ContractAddEdit_PreparationDate").value = Contract.PreparationDate.split('-').reverse().join('-');
+        document.getElementById("ContractAddEdit_ContractAmount").value = Contract.ContractAmount;
+        document.getElementById("ContractAddEdit_Comment").value = Contract.Comment;
+        document.getElementById("ContractAddEdit_ID").value = Contract.ID;
+        Submit = document.getElementById("ContractAddEdit_Submit");
+        Submit.disabled = false;
+        Submit.innerHTML = "Изменить";
+    }
 
-function ContractAddEdit_Close() {
-    ModalEditor = document.getElementById("ContractAddEdit_Background");
-    ModalEditor.style.visibility = "hidden";
-}
+    function ContractAddEdit_Close() {
+        ModalEditor = document.getElementById("ContractAddEdit_Background");
+        ModalEditor.style.visibility = "hidden";
+    }
 
-function ContractAddEdit_CheckSubmitButton(TitleText) {
-    btn = document.getElementById("ContractAddEdit_Submit");
-    btn.disabled = (TitleText == "");
-}
+    function ContractAddEdit_CheckSubmitButton(TitleText) {
+        btn = document.getElementById("ContractAddEdit_Submit");
+        btn.disabled = (TitleText == "");
+    }
 </script>
 
 

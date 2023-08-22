@@ -34,13 +34,19 @@
 
 <?php
     global $Data;
+    global $DEBUG;
+
+    $DEBUG['Time'] = round(microtime(true) - $DEBUG['Time'], 4);
+    $DEBUG['Memory'] = round((memory_get_usage() - $DEBUG['Memory']) / 1024, 0);
 ?>
 
 <div class="FooterWrapeer FooterItemLeft">
     <div class="FooterFrame">
 
         <div class="FooterItem">
-            <p><?php echo sprintf('%s v%s', $Data['SystemInfo']['Title'], $Data['SystemInfo']['Version']); ?></p>
+            <p><?php echo sprintf('Выполнено за %s сек', $DEBUG['Time']); ?></p>
+            <p><?php echo sprintf('Использовано памяти %s кб', $DEBUG['Memory']); ?></p>
+            <p><?php echo sprintf('Версия %s', $Data['SystemInfo']['Version']); ?></p>
             <p><?php echo $Data['SystemInfo']['Mail']; ?></p>
         </div>
 

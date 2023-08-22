@@ -1,5 +1,7 @@
 <?php
-use Vtiful\Kernel\Format;
+
+$DEBUG['Time'] = microtime(true);
+$DEBUG['Memory'] = memory_get_usage();
 
 //Пути
 define("DIR_ROOT", dirname(__FILE__)."/");

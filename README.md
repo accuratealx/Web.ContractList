@@ -1,10 +1,8 @@
 # Список контрактов
 
-![](https://img.shields.io/github/v/release/accuratealx/Web.ContractList)
 ![](https://img.shields.io/github/stars/accuratealx/Web.ContractList)
 ![](https://img.shields.io/github/downloads/accuratealx/Web.ContractList/total)
 ![](https://img.shields.io/github/repo-size/accuratealx/Web.ContractList)
-![](https://img.shields.io/github/release-date/accuratealx/Web.ContractList)
 ![](https://img.shields.io/github/last-commit/accuratealx/Web.ContractList)
 ![](https://img.shields.io/github/languages/top/accuratealx/Web.ContractList)
 
